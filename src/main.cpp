@@ -53,6 +53,13 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define MAX_FREQ 30000000UL     // 30 MHz
 #define FREQ_STEP 100000UL      // 100 kHz
 
+// AD9850 DDS constants
+#define DDS_TUNING_WORD_MAX 4294967296ULL  // 2^32 for frequency calculation
+#define DDS_CLOCK_FREQ 125000000UL         // 125 MHz reference clock
+
+// UI constants
+#define BUTTON_DEBOUNCE_MS 200  // Button debounce delay in milliseconds
+
 // Current state
 unsigned long currentFreq = 7000000UL; // Start at 7 MHz
 bool sweepMode = false;
@@ -155,8 +162,7 @@ void initAD9850() {
 void setFrequency(unsigned long freq) {
   // Calculate frequency word for AD9850
   // freq_word = (target_freq * 2^32) / ref_clock
-  // ref_clock = 125 MHz for AD9850
-  unsigned long freqWord = ((unsigned long long)freq * 4294967296ULL) / 125000000UL;
+  unsigned long freqWord = ((unsigned long long)freq * DDS_TUNING_WORD_MAX) / DDS_CLOCK_FREQ;
   
   // Send 32 bits of frequency word
   for (int i = 0; i < 32; i++) {
@@ -320,7 +326,7 @@ void handleButtons() {
   unsigned long now = millis();
   
   // Debounce delay
-  if (now - lastButtonPress < 200) {
+  if (now - lastButtonPress < BUTTON_DEBOUNCE_MS) {
     return;
   }
   

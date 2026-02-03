@@ -209,3 +209,34 @@ This provides 50% attenuation (2:1 divider).
 - Lower accuracy at band edges (1 MHz, 30 MHz)
 - Requires calibration with known loads
 - Not suitable for transmitter tuning under full power
+
+## Next Steps
+
+After building the hardware, follow these steps:
+
+1. **Initial Testing**:
+   - Connect power and verify ESP32 boots
+   - Check OLED display shows startup message
+   - Test buttons for responsiveness
+
+2. **DDS Signal Verification**:
+   - Connect oscilloscope or frequency counter to AD9850 output
+   - Verify signal generation at various frequencies
+   - Check signal quality and stability
+
+3. **Detector Calibration**:
+   - Connect 50Ω dummy load
+   - Adjust detector circuit for proper voltage levels
+   - Verify SWR reading near 1.0:1
+
+4. **Real-World Testing**:
+   - Connect to antenna under test
+   - Perform frequency sweeps
+   - Compare results with known antenna specifications
+
+5. **Future Enhancements**:
+   - Add Smith chart display
+   - Implement impedance measurement (R + jX)
+   - Add data logging to SD card
+   - Bluetooth connectivity for remote monitoring
+   - Battery power option for portable operation
