@@ -39,3 +39,21 @@
 
 # debug information files
 *.dwo
+
+# PlatformIO
+.pio
+.vscode
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
+
+# IDE
+.idea
+*.swp
+*.swo
+*~
+
+# Build artifacts
+build/
+dist/
