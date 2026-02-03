@@ -54,7 +54,7 @@ HF Antenna Analyzer is a DIY project for building an RF antenna analysis tool de
 Regular calibration is recommended for accurate measurements:
 * Open circuit calibration
 * Short circuit calibration
-* 50Ω load calibration
+* 50 ohm load calibration
 
 ## Building from Source
 Detailed build instructions will be provided as the project develops.
