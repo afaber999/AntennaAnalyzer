@@ -39,3 +39,8 @@
 
 # debug information files
 *.dwo
+
+
+c_tests
+hardware
+refs
